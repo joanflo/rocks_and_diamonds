@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>level_info</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="level_info.css" rel="stylesheet" />
+    <script src="level_info.js"></script>
+</head>
+<body>
+    <div class="level_info fragment">
+        <header aria-label="Header content" role="banner">
+            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle"></span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            
+            <div class="column1">
+                <div class="text">
+                    <p id="description" class="text"></p>
+                </div>
+
+                <div class="row1">
+                    <div id="normal">
+                        <div id="normal_tittle"></div>
+                    </div>
+
+                    <div id="hard">
+                        <div id="hard_tittle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column2">
+                <div id="scores">
+                    <div id="scores_tittle"></div>
+
+                    <table>
+                        <tr>
+                            <th id="trophies"></th>
+                            <th id="normal_scores_tittle"></th>
+                            <th id="hard_scores_tittle"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="trophy" src="/images/levels/trophy_gold.png" />
+                            </td>
+                            <td id="normal_1">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                            <td id="hard_1">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="trophy" src="/images/levels/trophy_silver.png" />
+                            </td>
+                            <td id="normal_2">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                            <td id="hard_2">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="trophy" src="/images/levels/trophy_bronze.png" />
+                            </td>
+                            <td id="normal_3">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                            <td id="hard_3">
+                                <img class="score" src="/images/levels/calendar.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/clock.png" /><p class="score"></p>
+                                <br />
+                                <img class="score" src="/images/levels/gem.png" /><p class="score"></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="facebook">
+
+                </div>
+
+                <div id="twitter"">
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>

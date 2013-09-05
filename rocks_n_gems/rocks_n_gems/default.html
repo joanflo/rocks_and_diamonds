@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>rocks_n_gems</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+    <script src="/js/navigator.js"></script>
+
+    <!-- Microsoft Advertising required references -->
+    <script src="/MSAdvertisingJS/ads/ad.js" ></script>
+
+    <!-- rocks_n_gems references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+    <script src="/js/data_manager.js"></script>
+    <script src="/js/text_manager.js"></script>
+</head>
+<body>
+
+    <!-- multiresolution -->
+    <div data-win-control="WinJS.UI.ViewBox">
+        <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/home/home.html'}"></div>
+    </div>
+
+
+    <!-- board size flyout -->
+    <div id="board_size_flyout" class="board_flyout" data-win-control="WinJS.UI.Flyout" aria-label="{confirm delete flyout}">
+        <div class="board_flyout_info">
+            <p><b>Select the desired board size.</b></p>
+            <br />
+            <p style="text-align:left;">The minimum board size it's 14x10.</p>
+        </div>
+        <div class="board_flyout_info">
+            <div class="left_flyout">
+                <table>
+                    <tr>
+                        <td>
+                            <b>Horizontal cells:</b>
+                        </td>
+                        <td>
+                            <input id="board_size_flyout_input_n" type="number" min="14" value="14" name="horitzontal cells">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Vertical cells:</b>
+                        </td>
+                        <td>
+                            <input id="board_size_flyout_input_m" type="number" min="10" value="10" name="vertical cells">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right_flyout">
+                <button class="board_flyout_button" id="sizeChanged">New Board</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- save board flyout -->
+    <div id="save_board_flyout" class="board_flyout" data-win-control="WinJS.UI.Flyout" aria-label="{confirm delete flyout}" >
+        <div class="board_flyout_info">
+            <p><b>Save board.</b></p>
+            <br />
+        </div>
+        <div class="board_flyout_info">
+            <br />
+            <table>
+                <tr>
+                    <td>
+                        <b>File name:</b>
+                    </td>
+                    <td>
+                        <input id="board_filename" type="text" name="file name" >
+                    </td>
+                </tr>
+            </table>
+            <button class="board_flyout_button" id="saveFile">Save Board</button>
+        </div>
+    </div>
+
+
+    <!-- bottom app bar -->
+    <div id="bottom_appbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
+        
+        <button data-win-control="WinJS.UI.AppBarCommand"  
+            data-win-options="{id:'playBoard', label:'Play', icon:'play', section:'global', type:'flyout', tooltip:'Play board'}">
+        </button>
+
+        <button data-win-control="WinJS.UI.AppBarCommand"   
+            data-win-options="{id:'openBoard', label:'Open Board', icon:'openlocal', section:'global', type:'flyout',  tooltip:'Open and edit a saved board'}">
+        </button>  <!-- possible icons: openfile, openlocal-->
+
+        <button data-win-control="WinJS.UI.AppBarCommand"  
+            data-win-options="{id:'saveBoard', label:'Save Board', icon:'save', section:'global', type:'flyout',  flyout:'save_board_flyout', tooltip:'Save this board'}">
+        </button>
+
+        <button data-win-control="WinJS.UI.AppBarCommand"  
+            data-win-options="{id:'setBoardSize', label:'New Board', icon:'fullscreen', section:'global', type:'flyout',  flyout:'board_size_flyout',  tooltip:'Set the new board size'}">
+        </button>  <!-- possible icons: selectall, viewall, crop, fullscreen-->
+
+        <!--
+        <button data-win-control="WinJS.UI.AppBarCommand" 
+            data-win-options="{id:'check_scores', label:'Scores', tooltip:'Check your scores', icon:'bullets'}">
+        </button>
+        -->
+    </div>
+
+
+    <!-- top app bar -->
+    <div id="top_appbar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'top', sticky:'true'}">
+        <div id="top_appbar_left">
+            <button id="empty_button" style="background-color:#b200ff" class="appbar_button">
+                <b class="appbar_button">empty</b>
+                <img class="appbar_button" src="images/elements/empty.png" />
+            </button>
+
+            <button id="wall_button" style="background-color:#ff6a00" class="appbar_button">
+                <b class="appbar_button">wall</b>
+                <img class="appbar_button" src="images/elements/wall.png" />
+            </button>
+
+            <button id="land_button" style="background-color:#ff006e" class="appbar_button">
+                <b class="appbar_button">land</b>
+                <img class="appbar_button" src="images/elements/land.png" />
+            </button>
+
+            <button id="character_button" style="background-color:#ffd800" class="appbar_button">
+                <b class="appbar_button">character</b>
+                <img class="appbar_button" src="images/elements/character.png" />
+            </button>
+
+            <button id="monster_button" style="background-color:#4cff00" class="appbar_button">
+                <b class="appbar_button">monster</b>
+                <img class="appbar_button" src="images/elements/monster.png" />
+            </button>
+
+            <button id="gem_button" style="background-color:#0044FF" class="appbar_button">
+                <b class="appbar_button">diamond</b>
+                <img class="appbar_button" src="images/elements/gem.png" />
+            </button>
+
+            <button id="rock_button" style="background-color:#E51400" class="appbar_button">
+                <b class="appbar_button">rock</b>
+                <img class="appbar_button" src="images/elements/rock.png" />
+            </button>
+
+            <button id="dynamite_button" style="background-color:#E671B8" class="appbar_button">
+                <b class="appbar_button">dynamite</b>
+                <img class="appbar_button" src="images/elements/dynamite.png" />
+            </button>
+
+            <button id="key_button" style="background-color:#339933" class="appbar_button">
+                <b class="appbar_button">key</b>
+                <img class="appbar_button" src="images/elements/key.png" />
+            </button>
+            
+            <button id="door_button" style="background-color:#1BA1E2" class="appbar_button">
+                <b class="appbar_button">door</b>
+                <img class="appbar_button" src="images/elements/door.png" />
+            </button>
+        </div>
+
+        <!-- separate -->
+        
+        <div id="top_appbar_right">
+        </div>
+    </div>
+
+</body>
+</html>

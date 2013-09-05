@@ -1,0 +1,121 @@
+﻿.level_selection section[role=main] {
+	width: 1000px;
+	margin: auto;
+    margin-top: 30px;
+}
+
+
+div.row {
+    margin-bottom: 20px;
+    height: 160px;
+}
+
+
+
+div.item {
+    float: left;
+    width: 180px;
+    height: 144px;
+    margin: 8px 10px 8px 10px;
+}
+
+
+div.item1 {
+    background-image: url(/images/levels/diamond.png);
+}
+div.item1:hover {
+    background-image: url(/images/levels/diamond_hover1.png);
+}
+
+div.item2 {
+    background-image: url(/images/levels/diamond.png);
+}
+div.item2:hover {
+    background-image: url(/images/levels/diamond_hover2.png);
+}
+
+div.item3 {
+    background-image: url(/images/levels/diamond.png);
+}
+div.item3:hover {
+    background-image: url(/images/levels/diamond_hover3.png);
+}
+
+div.item4 {
+    background-image: url(/images/levels/diamond.png);
+}
+div.item4:hover {
+    background-image: url(/images/levels/diamond_hover4.png);
+}
+
+div.item5 {
+    background-image: url(/images/levels/diamond.png);
+}
+div.item5:hover {
+    background-image: url(/images/levels/diamond_hover5.png);
+}
+
+
+div.item_locked1 {
+    background-image: url(/images/levels/diamond_unlock1.png);
+}
+div.item_locked1:hover {
+    background-image: url(/images/levels/diamond_lock1.png);
+}
+
+div.item_locked2 {
+    background-image: url(/images/levels/diamond_unlock2.png);
+}
+div.item_locked2:hover {
+    background-image: url(/images/levels/diamond_lock2.png);
+}
+
+div.item_locked3 {
+    background-image: url(/images/levels/diamond_unlock3.png);
+}
+div.item_locked3:hover {
+    background-image: url(/images/levels/diamond_lock3.png);
+}
+
+div.item_locked4 {
+    background-image: url(/images/levels/diamond_unlock4.png);
+}
+div.item_locked4:hover {
+    background-image: url(/images/levels/diamond_lock4.png);
+}
+
+div.item_locked5 {
+    background-image: url(/images/levels/diamond_unlock5.png);
+}
+div.item_locked5:hover {
+    background-image: url(/images/levels/diamond_lock5.png);
+}
+
+
+
+
+div.level_name {
+    margin: auto;
+    width: 120px;
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+
+
+
+
+@media screen and (-ms-view-state: snapped) {
+    .level_selection section[role=main] {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .level_selection section[role=main] {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}

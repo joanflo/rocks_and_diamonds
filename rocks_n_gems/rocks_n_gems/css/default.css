@@ -1,0 +1,291 @@
+﻿body {
+}
+
+html {
+    cursor: default;
+}
+
+#bottom_appbar {
+    background-color: #808080;
+}
+
+#top_appbar {/* 808080 */
+    background-color: #808080;
+    height: 120px;
+}
+#top_appbar_left {
+    float: left;
+}
+#top_appbar_right {
+    float: right;
+    margin: 15px;
+}
+#board_size_flyout {
+    background-color: #b200ff;
+}
+#open_board_flyout {
+    background-color: #ff6a00;
+}
+#save_board_flyout {
+    background-color: #ffd800;
+}
+.board_flyout {
+    width: 380px;
+}
+.board_flyout_info {
+    width: 100%; 
+    text-align: center;
+}
+.board_flyout_button {
+    margin-top: 8px;
+    width: 75px;
+    height: 75px;
+}
+#board_size_flyout_input_n {
+    width: 40px;
+}
+#board_size_flyout_input_m {
+    width: 40px;
+}
+.left_flyout {
+    float: left;
+    width: 200px;
+    text-align: right;
+}
+.right_flyout {
+    float: right;
+    width: 100px;
+}
+
+button.appbar_button {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+b.appbar_button {
+    margin-left:5px;
+    margin-right:5px;
+}
+img.appbar_button {
+    width: 50px;
+    height: 50px;
+}
+
+
+img.text_image {
+    margin: 0px 2px 0px 2px;
+}
+div.text_image1 {
+    display: block;
+}
+div.text_image2 {
+    margin: 0px 10px 0px 10px;
+    display: inline;
+}
+
+
+.win-viewbox {
+    width: 100%;
+    height: 100%;
+}
+
+#contenthost {
+    background-size: contain;
+    
+}
+
+
+.fragment {
+    /* Define a grid with rows for a banner and a body */
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 128px 1fr 0px;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+}
+
+    .fragment header[role=banner] {
+        /* Define a grid with columns for the back button and page title. */
+        -ms-grid-columns: 120px 1fr;
+        -ms-grid-rows: 1fr;
+        display: -ms-grid;
+    }
+
+        .fragment header[role=banner] .win-backbutton {
+            margin-left: 39px;
+            margin-top: 59px;
+        }
+
+        .fragment header[role=banner] .titlearea {
+            -ms-grid-column: 2;
+            margin-top: 34px;
+        }
+
+            .fragment header[role=banner] .titlearea .pagetitle {
+                width: calc(100% - 20px);
+                font-family: Consolas;
+                text-transform: uppercase;
+            }
+
+    .fragment section[role=main] {
+        -ms-grid-row: 2;
+        height: 100%;
+        width: 100%;
+    }
+    
+/* ---- Caso especial 1366/768 */
+/* fullscreen-landscape */
+@media screen and (device-aspect-ratio:1366/768) and (-ms-view-state: fullscreen-landscape) {
+    #contenthost {
+        height: 768px;
+        width: 1366px;
+    }
+}
+
+/* filled */
+@media screen and (device-aspect-ratio:1366/768) and (-ms-view-state: filled) {
+    #contenthost {
+        height: 768px;
+        width: 1024px;
+    }
+}
+
+@media screen and (device-aspect-ratio:1366/768) and (-ms-view-state: filled) and ()  {
+    #contenthost {
+        height: 768px;
+        width: 1024px;
+    }
+}
+
+/* portrait */
+@media screen and (device-aspect-ratio:768/1366) and (-ms-view-state: fullscreen-portrait) {
+    #contenthost {
+        height: 1366px;
+        width: 768px;
+    }
+}
+
+/* ---- Caso 16/9 (igual que el anterior) */
+/* fullscreen-landscape */
+@media screen and (device-aspect-ratio:16/9) {
+    #contenthost {
+        height: 768px;
+        width: 1366px;
+    }
+}
+
+/* filled */
+@media screen and (device-aspect-ratio:16/9) and (-ms-view-state: filled) {
+    #contenthost {
+        height: 768px;
+        width: 1024px;
+    }
+}
+
+@media screen and (device-aspect-ratio:16/9) and (-ms-view-state: filled) and (device-width: 1920px) and (max-resolution: 96dpi){
+    #contenthost {
+        height: 768px;
+        width: 1122px;
+    }
+}
+
+@media screen and (device-aspect-ratio:16/9) and (-ms-view-state: filled) and (device-width: 2560px) {
+    #contenthost {
+        height: 768px;
+        width: 1038px;
+    }
+}
+
+@media screen and (device-aspect-ratio:16/9) and (-ms-view-state: filled) and (device-width: 2560px) and (max-resolution: 109dpi) {
+    #contenthost {
+        height: 768px;
+        width: 1183px;
+    }
+}
+
+/* portrait */
+@media screen and (device-aspect-ratio:9/16) {
+    #contenthost {
+        height: 1366px;
+        width: 768px;
+    }
+}
+
+/* ---- Caso 4/3 */
+/* fullscreen-landscape */
+@media screen and (device-aspect-ratio:4/3) {
+    #contenthost {
+        height: 768px;
+        width: 1024px;
+    }
+}
+
+/* portrait */
+@media screen and (device-aspect-ratio:3/4) {
+    #contenthost {
+        height: 1024px;
+        width: 768px;
+    }
+}
+
+/* Caso 8/5 */
+/* fullscreen-landscape */
+@media screen and (device-aspect-ratio:8/5) {
+    #contenthost {
+        height: 800px;
+        width: 1280px;
+    }
+}
+
+/* portrait */
+@media screen and (device-aspect-ratio:5/8) {
+    #contenthost {
+        height: 1280px;
+        width: 800px;
+    }
+}
+
+
+@media screen and (-ms-view-state: snapped) {
+    #contenthost {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .fragment header[role=banner] {
+        -ms-grid-columns: auto 1fr;
+        margin-left: 20px;
+        margin-top: -50px;
+    }
+
+        .fragment header[role=banner] .win-backbutton {
+            margin: 0;
+            margin-right: 10px;
+            margin-top: 76px;
+        }
+
+            .fragment header[role=banner] .win-backbutton:disabled {
+                display: none;
+            }
+
+        .fragment header[role=banner] .titlearea {
+            -ms-grid-column: 2;
+            margin-left: 0;
+            margin-top: 68px;
+        }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .fragment header[role=banner] {
+        -ms-grid-columns: 100px 1fr;
+    }
+
+        .fragment header[role=banner] .win-backbutton {
+            margin-left: 29px;
+
+        }
+
+   
+        
+}

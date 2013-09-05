@@ -1,0 +1,191 @@
+﻿.level_info section[role=main] {
+	width: 970px;
+	margin: auto;
+    margin-top: 20px;
+}
+
+
+
+div.text {
+    height: 165px;
+    padding-left: 10px;
+}
+p.text {
+    font-size: 16px;
+}
+
+
+
+
+/* tiles display */
+div.column1 {
+    width: 550px;
+    float: left;
+    margin-right: 20px;
+}
+div.row1 {
+    width: 550px;
+}
+div.column2 {
+    width: 400px;
+    float: left;
+}
+div.row2 {
+    width: 500px;
+}
+
+
+
+
+/* Normal mode tile */
+#normal {
+    width: 265px;
+    height: 320px;
+    float: left;
+
+    background-color: #b200ff;
+    background-image: url(/images/levels/normal_mode.png);
+}
+#normal:hover {
+    background-image: url(/images/levels/normal_mode_hover.png);
+}
+
+#normal_tittle {
+    padding: 10px;
+    text-align: left;
+}
+
+
+
+/* Hard mode tile */
+#hard {
+    width: 265px;
+    height: 320px;
+    float: left;
+    margin-left: 20px;
+
+    background-color: #ff6a00;
+}
+
+.hard_nobloqued {
+    background-image: url(/images/levels/hard_mode.png);
+}
+.hard_nobloqued:hover {
+    background-image: url(/images/levels/hard_mode_hover.png);
+}
+
+.hard_bloqued {
+    background-image: url(/images/levels/lock2.png);
+}
+.hard_bloqued:hover {
+    background-image: url(/images/levels/unlock2.png);
+}
+
+#hard_tittle {
+    padding: 10px;
+    text-align: right;
+}
+
+
+
+
+/* Scores tile */
+#scores {
+    width: 100%;
+    height: 410px;
+    margin-bottom: 20px;
+
+    background-color: #ff006e;
+}
+
+#scores_tittle {
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+td {
+    padding: 5px;
+}
+
+#trophies {
+    width: 96px;
+}
+
+img.trophy {
+    width: 80px;
+    height: 80px;
+}
+
+
+img.score {
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: 10px;
+}
+p.score {
+    display: inline;
+    font-size: 14px;
+    line-height: 27px;
+}
+
+
+
+#normal_scores_tittle {
+    text-align: left;
+    width: 145px;
+}
+
+#hard_scores_tittle {
+    text-align: left;
+    width: 145px;
+}
+
+
+
+
+
+/* Social networks */
+
+#facebook {
+    float: left;
+    width: 190px;
+    height: 70px;
+    margin-right: 20px;
+
+    background-color: #3B5998;
+    background-image: url(/images/headings/heading6.png);
+}
+#facebook:hover {
+    background-image: url(/images/headings/heading6_hover.png);
+}
+
+#twitter {
+    float: left;
+    width: 190px;
+    height: 70px;
+
+    background-color: #8EC1DA;
+    background-image: url(/images/headings/heading7.png);
+}
+#twitter:hover {
+    background-image: url(/images/headings/heading7_hover.png);
+}
+
+
+
+
+@media screen and (-ms-view-state: snapped) {
+    .level_info section[role=main] {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .level_info section[role=main] {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}

@@ -1,0 +1,236 @@
+﻿
+.homepage section[role=main] {
+    /*margin-left: 120px;*/
+}
+
+#Snapview {
+    display: none;
+}
+
+#MainPage {
+    display: block;
+}
+
+.homepage .Maindiv {
+    height: 100%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+    .homepage .Maindiv .Contentdiv {
+        height: 600px;
+        margin-top: 80px;
+        -ms-grid-rows: 300px 170px 1fr;
+        -ms-grid-columns: 950px 15px 290px 1fr;
+        display: -ms-grid;
+    }
+
+        .homepage .Maindiv .Contentdiv .ContentRow1 {
+            -ms-grid-row: 1;
+            -ms-grid-column: 1;
+        }
+
+            /* HEADING 1 */
+            .Heading1 {
+                float: left;
+                margin-right: 20px;
+                width: 480px;
+                height: 280px;
+
+                background-color: #b200ff;
+                border: 10px solid #b200ff;
+                background-image: url(/images/headings/heading1.jpg);
+            }
+            .Heading1:hover {
+                background-image: url(/images/headings/heading1_blur.jpg);
+            }
+            .overlayHeading1 {
+                width: 100%;
+                height: 50px;
+                margin-top: 230px;
+
+                background-color: #b200ff;
+                /*background-color:rgba(178,0,255,0.5);*/
+            }
+            .overlayHeading1Image {
+                position: absolute;
+                margin-top: 30px;
+                margin-left: 20px;
+                padding-top: 5px;
+
+                background-color: #b200ff;
+            }
+
+            /* HEADING 2 */
+            .Heading2 {
+                float: left;
+                margin-right: 20px;
+                width: 170px;
+                height: 280px;
+
+                background-color: #ff6a00;
+                border: 10px solid #ff6a00;
+                background-image: url(/images/headings/heading2.jpg);
+            }
+            .Heading2:hover {
+                background-image: url(/images/headings/heading2_blur.jpg);
+            }
+            .overlayHeading2 {
+                width: 100%;
+                height: 50px;
+                margin-top: 230px;
+
+                background-color: #ff6a00;
+                /*background-color:rgba(255,106,0,0.5);*/
+            }
+            .overlayHeading2Image {
+                position: absolute;
+                margin-top: 30px;
+                margin-left: 20px;
+                padding-top: 5px;
+
+                background-color: #ff6a00;
+            }
+
+            /* HEADING 3 */
+            .Heading3 {
+                float: left;
+                width: 170px;
+                height: 280px;
+
+                background-color: #ff006e;
+                border: 10px solid #ff006e;
+                background-image: url(/images/headings/heading3.jpg);
+            }
+            .Heading3:hover {
+                background-image: url(/images/headings/heading3_blur.jpg);
+            }
+            .overlayHeading3 {
+                width: 100%;
+                height: 50px;
+                margin-top: 230px;
+
+                background-color: #ff006e;
+                /*background-color:rgba(255,0,110,0.5);*/
+            }
+            .overlayHeading3Image {
+                position: absolute;
+                margin-top: 30px;
+                margin-left: 20px;
+                padding-top: 5px;
+
+                background-color: #ff006e;
+            }
+
+
+p.description {
+    padding: 10px;
+}
+
+
+        .homepage .Maindiv .Contentdiv .ContentRow2 {
+            -ms-grid-row: 2;
+            -ms-grid-column: 1;
+            margin-top: 20px;
+        }
+
+            /* HEADING 4 */
+            .Heading4 {
+                float: left;
+                margin-right: 20px;
+                width: 170px;
+                height: 140px;
+                padding-top: 5px;
+
+                background-color: #ffd800;
+                border: 10px solid #ffd800;
+                background-image: url(/images/headings/heading4.jpg);
+            }
+            .Heading4:hover {
+                background-image: url(/images/headings/heading4_blur.jpg);
+            }
+            .overlayHeading4Image {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 5px;
+
+                background-color: #ffd800;
+            }
+
+            /* HEADING 5 */
+            .Heading5 {
+                float: left;
+                margin-right: 20px;
+                width: 480px;
+                height: 140px;
+
+                background-color: #4cff00;
+                border: 10px solid #4cff00;
+                background-image: url(/images/headings/heading5.jpg);
+            }
+            .Heading5:hover {
+                background-image: url(/images/headings/heading5_blur.jpg);
+            }
+            .overlayHeading5Image {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 20px;
+                padding-top: 5px;
+
+                background-color: #4cff00;
+            }
+        
+            /* HEADING 6 */
+            .Heading6 {
+                float: left;
+                width: 190px;
+                height: 70px;
+
+                background-color: #3B5998;
+                background-image: url(/images/headings/heading6.png);
+            }
+            .Heading6:hover {
+                background-image: url(/images/headings/heading6_hover.png);
+            }
+
+            /* HEADING 7 */
+            .Heading7 {
+                float: left;
+                margin-top: 20px;
+                width: 190px;
+                height: 70px;
+
+                background-color: #8EC1DA;
+                background-image: url(/images/headings/heading7.png);
+            }
+            .Heading7:hover {
+                background-image: url(/images/headings/heading7_hover.png);
+            }
+
+
+
+@media screen and (-ms-view-state: snapped) {
+    .homepage section[role=main] {
+        margin-left: 20px;
+    }
+
+    .Snapview {
+        font-size: 20px;
+        /*margin-left: 20px;*/
+        padding-top: 60%;
+    }
+
+    #Snapview {
+        display: block;
+    }
+
+    #MainPage {
+        display: none;
+    }
+}
+
+@media screen and (-ms-view-state: portrait) {
+    .homepage section[role=main] {
+        margin-left: 100px;
+    }
+}
