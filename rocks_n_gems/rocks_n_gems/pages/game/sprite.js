@@ -12,7 +12,7 @@ function Sprite(pos, size, speed, frames, dir, once) {
     this.once = once;                                       // true to only run the animation once, defaults to false
 }
 
-var c = 0;
+
 Sprite.prototype.update = function (deltaTime) {
     this._index += this.speed * (deltaTime / 1000);
 }

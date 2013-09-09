@@ -12,7 +12,7 @@
             bottomAppbar.disabled = true;
             var topAppbar = document.getElementById('top_appbar');
             topAppbar.disabled = true;
-            
+
             // set menu
             setTile("Heading1", "pages/level_selection/level_selection.html", undefined);
             drawString("Campaign", document.getElementsByClassName('overlayHeading1Image')[0], 28);

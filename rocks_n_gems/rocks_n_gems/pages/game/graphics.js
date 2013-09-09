@@ -39,6 +39,10 @@ Graphics.prototype.render = function (deltaTime) {
 
     // render explosions
     this.renderElement(deltaTime, this.board.getExplosions());
+
+    // render chararacter animation
+    this.renderElement(deltaTime, this.board.getCharAnimation());
+
 };
 
 

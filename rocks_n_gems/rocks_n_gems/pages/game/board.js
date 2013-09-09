@@ -16,6 +16,7 @@ function Board(n, m) {
     this.shining = [];
     this.monsters = [];
     this.explosions = [];
+    this.charAnimation = [];
 
     this.n = n;
     this.m = m;
@@ -96,6 +97,10 @@ Board.prototype.getMonsters = function () {
 
 Board.prototype.getExplosions = function () {
     return this.explosions;
+};
+
+Board.prototype.getCharAnimation = function () {
+    return this.charAnimation;
 };
 
 
@@ -299,7 +304,10 @@ Board.prototype.setCurrentItem = function (currentTarget) {
 
 
 Board.prototype.placeDynamite = function (pos) {
-    this.addExplosions(pos.i, pos.j);
+    if (this.dynamiteNumber > 0) {
+        this.addExplosions(pos.i, pos.j);
+        this.dynamiteNumber--;
+    }
 };
 
 
@@ -382,6 +390,12 @@ Board.prototype.moveCharacter = function (movementType) {
 
 
             this.updateCharacterPosition(iAux, jAux);
+            if (!this.charAnimation[0]) { // no character animations 
+                this.addCharAnimation(iAux, jAux, movementType);
+            } else {
+                var animation = this.charAnimation[0];
+                animation.pos = [iAux, jAux];
+            }
         }
     }
 };
@@ -631,6 +645,29 @@ Board.prototype.addExplosion = function (i, j) {
 };
 
 
+Board.prototype.addCharAnimation = function (i, j, movementType) {
+    var sprMapHeight;
+    switch (movementType) {
+        case LEFT:
+            sprMapHeight = 150;
+            break;
+        case UP:
+            sprMapHeight = 200;
+            break;
+        case RIGHT:
+            sprMapHeight = 250;
+            break;
+        case DOWN:
+            sprMapHeight = 300;
+            break;
+    }
+    this.charAnimation.push({
+        pos: [i, j],
+        sprite: new Sprite([0, sprMapHeight], [CELL_SIZE, CELL_SIZE], 1, [0, 1, 2, 3], "horizontal", true)
+    });
+};
+
+
 Board.prototype.updateGameElements = function (deltaTime) {
 
     // update character & land dust
@@ -646,6 +683,8 @@ Board.prototype.updateGameElements = function (deltaTime) {
     // update explosions
     this.updateElement(deltaTime, this.explosions);
 
+    // update character animation
+    this.updateElement(deltaTime, this.charAnimation);
 };
 
 
