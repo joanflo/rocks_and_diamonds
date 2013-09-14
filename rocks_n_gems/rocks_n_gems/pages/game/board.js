@@ -15,8 +15,10 @@ function Board(n, m) {
     this.dust = []; // TODO
     this.shining = [];
     this.monsters = [];
+    this.mines = [];
     this.explosions = [];
     this.charAnimation = [];
+    this.portalAnimation = [];
 
     this.n = n;
     this.m = m;
@@ -27,6 +29,8 @@ function Board(n, m) {
     this.jVisible = 0;
 
     this.character = new Character(1, 1); //character initial position
+    this.portal = new Portal(0, 1); //portal initial position
+    this.physics = undefined;
     this.boardMatrix = undefined;
 
     if (n != undefined && m != undefined) {
@@ -46,16 +50,25 @@ function Board(n, m) {
         }
 
         this.setCell(CELL_CHARACTER, 1, 1); //character initial position
+        this.setCell(CELL_DOOR, 0, 1); //portal initial position
     }
 }
 
 
 Board.prototype.setCell = function (cellCode, i, j) {
+    if (cellCode == CELL_EMPTY) {
+        console.log("!!");
+    }
     this.boardMatrix[i][j] = cellCode;
 };
 
 Board.prototype.getCell = function (i, j) {
     return this.boardMatrix[i][j];
+};
+
+
+Board.prototype.getVisibleCoords = function () {
+    return [this.iVisible, this.jVisible];
 };
 
 
@@ -95,12 +108,20 @@ Board.prototype.getMonsters = function () {
     return this.monsters;
 };
 
+Board.prototype.getMines = function () {
+    return this.mines;
+};
+
 Board.prototype.getExplosions = function () {
     return this.explosions;
 };
 
 Board.prototype.getCharAnimation = function () {
     return this.charAnimation;
+};
+
+Board.prototype.getPortalAnimation = function () {
+    return this.portalAnimation;
 };
 
 
@@ -153,56 +174,84 @@ Board.prototype.putElement = function (x, y) {
     cell = this.localizeCell(x, y);
     if (!(cell.i == 0 || cell.i == this.n - 1 || cell.j == 0 || cell.j == this.m - 1)) {//we can't remove the wall cells
 
-        //just one character
-        if (this.currentItem == CELL_CHARACTER) {
-            if (this.character.isAvaiable()) {
-                var position = this.character.getPosition(); //old position
-                this.setCell(CELL_EMPTY, position.i, position.j);
+        if (this.currentItem != CELL_DOOR) {
+
+            //just one character
+            if (this.currentItem == CELL_CHARACTER) {
+                if (this.character.isAvaiable()) {
+                    var position = this.character.getPosition(); //old position
+                    this.setCell(CELL_LAND, position.i, position.j);
+                }
+                this.character.setPosition(cell.i, cell.j); //update position & state
+                this.character.setAvaiable(true);
+            } else if (this.getCell(cell.i, cell.j) == CELL_CHARACTER) { //erasing character
+                this.character.setAvaiable(false);
             }
-            this.character.setPosition(cell.i, cell.j); //update position & state
-            this.character.setAvaiable(true);
-        } else if (this.getCell(cell.i, cell.j) == CELL_CHARACTER) { //erasing character
-            this.character.setAvaiable(false);
+
+            //counting items number
+            switch (this.boardMatrix[cell.i][cell.j]) { //old item
+                case CELL_GEM:
+                    this.gemsNumber--;
+                    break;
+                case CELL_DYNAMITE:
+                    this.dynamiteNumber--;
+                    break;
+                case CELL_MONSTER:
+                    this.monstersNumber--;
+                    break;
+                case CELL_KEY:
+                    this.keysNumber--;
+                    break;
+            }
+            switch (this.currentItem) { //new item
+                case CELL_GEM:
+                    this.gemsNumber++;
+                    break;
+                case CELL_DYNAMITE:
+                    this.dynamiteNumber++;
+                    break;
+                case CELL_MONSTER:
+                    this.monstersNumber++;
+                    break;
+                case CELL_KEY:
+                    this.keysNumber++;
+                    break;
+            }
+
+            // putElement method only called in LEVEL_EDITOR mode
+            this.updateMarker("marker2", "Dynamite", this.dynamiteNumber);
+            this.updateMarker("marker3", "Diamonds", this.gemsNumber);
+            this.updateMarker("marker4", "Keys", this.keysNumber);
+
+            if (this.currentItem != undefined) {
+                this.setCell(this.currentItem, cell.i, cell.j);
+                this.graphics.drawBoard();
+            }
         }
 
-        //counting items number
-        switch (this.boardMatrix[cell.i][cell.j]) { //old item
-            case CELL_GEM:
-                this.gemsNumber--;
-                break;
-            case CELL_DYNAMITE:
-                this.dynamiteNumber--;
-                break;
-            case CELL_MONSTER:
-                this.monstersNumber--;
-                break;
-            case CELL_KEY:
-                this.keysNumber--;
-                break;
-        }
-        switch (this.currentItem) { //new item
-            case CELL_GEM:
-                this.gemsNumber++;
-                break;
-            case CELL_DYNAMITE:
-                this.dynamiteNumber++;
-                break;
-            case CELL_MONSTER:
-                this.monstersNumber++;
-                break;
-            case CELL_KEY:
-                this.keysNumber++;
-                break;
-        }
+    } else { //wall cell
 
-        // putElement method only called in LEVEL_EDITOR mode
-        this.updateMarker("marker2", "Dynamite", this.dynamiteNumber);
-        this.updateMarker("marker3", "Diamonds", this.gemsNumber);
-        this.updateMarker("marker4", "Keys", this.keysNumber);
+        //just one portal
+        if (!(cell.i == 0 && cell.j == 0)
+            && !(cell.i == 0 && cell.j == this.m - 1)
+            && !(cell.i == this.n - 1 && cell.j == 0)
+            && !(cell.i == this.n - 1 && cell.j == this.m - 1)) { // corners not allowed
 
-        if (this.currentItem != undefined) {
-            this.setCell(this.currentItem, cell.i, cell.j);
-            this.graphics.drawBoard();
+            if (this.currentItem == CELL_DOOR) {
+
+                var position = this.portal.getPosition();
+                if (this.portal.isAvaiable()) {
+                    this.setCell(CELL_WALL, position.i, position.j); // update old position
+                }
+                this.portal.setPosition(cell.i, cell.j); //update position & state
+                this.portal.setAvaiable(true);
+
+                this.setCell(CELL_DOOR, cell.i, cell.j);
+                this.graphics.drawBoard();
+            } else if (this.getCell(cell.i, cell.j) == CELL_DOOR) { //erasing portal
+                this.portal.setAvaiable(false);
+            }
+
         }
     }
 };
@@ -304,10 +353,8 @@ Board.prototype.setCurrentItem = function (currentTarget) {
 
 
 Board.prototype.placeDynamite = function (pos) {
-    if (this.dynamiteNumber > 0) {
-        this.addExplosions(pos.i, pos.j);
-        this.dynamiteNumber--;
-    }
+    this.addExplosions(pos.i, pos.j);
+    this.dynamiteNumber--;
 };
 
 
@@ -378,7 +425,8 @@ Board.prototype.moveCharacter = function (movementType) {
                     break;
                 case CELL_LAND:
                     // add dust
-                    this.addDust(iAux, jAux);
+                    console.log(position.i + " - " + position.j);
+                    this.addDust(position.i, position.j);
                     break;
                 case CELL_KEY:
                     // get key
@@ -497,6 +545,9 @@ Board.prototype.genRandomMatrix = function (mode) {
     this.setCell(CELL_LAND, 1, 2);
     this.setCell(CELL_LAND, 3, 1);
     this.setCell(CELL_LAND, 3, 2);
+
+    this.setCell(CELL_EMPTY, 2, 0);
+    this.addPortalAnimation(2,0,LEFT);
 };
 
 
@@ -616,7 +667,15 @@ Board.prototype.addDust = function (i, j) {
 Board.prototype.addShining = function (i, j) {
     this.shining.push({
         pos: [i, j],
-        sprite: new Sprite([0, 50], [CELL_SIZE, CELL_SIZE], 20, [0, 1, 2], "horizontal", true)
+        sprite: new Sprite([0, 50], [CELL_SIZE, CELL_SIZE], 10, [0, 1, 2], "horizontal", true)
+    });
+};
+
+
+Board.prototype.addMine = function (i, j) {
+    this.mines.push({
+        pos: [i, j],
+        sprite: new Sprite([0, 400], [CELL_SIZE, CELL_SIZE], 6, [0, 1, 2, 3, 4, 5], "horizontal", true)
     });
 };
 
@@ -638,7 +697,7 @@ Board.prototype.addExplosion = function (i, j) {
     if (this.getCell(i, j) != CELL_WALL) {
         this.explosions.push({
             pos: [i, j],
-            sprite: new Sprite([0, 0], [CELL_SIZE, CELL_SIZE], 10, [0, 1, 2, 3, 4, 5], "horizontal", true)
+            sprite: new Sprite([0, 350], [CELL_SIZE, CELL_SIZE], 18, [0, 1, 2, 3, 4, 5, 6], "horizontal", true)
         });
         this.setCell(CELL_EMPTY, i, j);
     }
@@ -668,6 +727,30 @@ Board.prototype.addCharAnimation = function (i, j, movementType) {
 };
 
 
+Board.prototype.addPortalAnimation = function (i, j, directionType) {
+    var sprMapHeight;
+    switch (directionType) {
+        case LEFT:
+            sprMapHeight = 450;
+            break;
+        case UP:
+            sprMapHeight = 500;
+            break;
+        case RIGHT:
+            sprMapHeight = 550;
+            break;
+        case DOWN:
+            sprMapHeight = 600;
+            break;
+    }
+    this.portalAnimation.push({
+        pos: [i, j],
+        sprite: new Sprite([0, sprMapHeight], [CELL_SIZE, CELL_SIZE], 24, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "horizontal", false)
+    });
+};
+
+
+
 Board.prototype.updateGameElements = function (deltaTime) {
 
     // update character & land dust
@@ -675,16 +758,20 @@ Board.prototype.updateGameElements = function (deltaTime) {
 
     // update monsters
 
+
     // update diamonds & rocks
+
     this.updateElement(deltaTime, this.shining);
 
-    // update key & door
-
     // update explosions
+    this.updateElement(deltaTime, this.mines);
     this.updateElement(deltaTime, this.explosions);
 
     // update character animation
     this.updateElement(deltaTime, this.charAnimation);
+
+    // update portal animation
+    this.updateElement(deltaTime, this.portalAnimation);
 };
 
 
@@ -700,3 +787,4 @@ Board.prototype.updateElement = function (deltaTime, elements) {
         }
     }
 };
+

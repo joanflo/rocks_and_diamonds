@@ -15,15 +15,15 @@
 
             // set menu
             setTile("Heading1", "pages/level_selection/level_selection.html", undefined);
-            drawString("Campaign", document.getElementsByClassName('overlayHeading1Image')[0], 28);
+            drawString("Campaign", document.getElementsByClassName('overlayHeading1Image')[0], 22);
             setTile("Heading2", "pages/game/game.html", CATCH_EM_ALL);
-            drawString("Catch_Em_All", document.getElementsByClassName('overlayHeading2Image')[0], 28);
+            drawString("Catch_Em_All", document.getElementsByClassName('overlayHeading2Image')[0], 22);
             setTile("Heading3", "pages/game/game.html", KILL_EM_ALL);
-            drawString("Kill_Em_All", document.getElementsByClassName('overlayHeading3Image')[0], 28);
+            drawString("Kill_Em_All", document.getElementsByClassName('overlayHeading3Image')[0], 22);
             setTile("Heading4", "pages/game/game.html", TUTORIAL);
             drawString("Tutorial", document.getElementsByClassName('overlayHeading4Image')[0], 22);
             setTile("Heading5", "pages/game/game.html", LEVEL_EDITOR);
-            drawString("Level_Editor", document.getElementsByClassName('overlayHeading5Image')[0], 28);
+            drawString("Level_Editor", document.getElementsByClassName('overlayHeading5Image')[0], 22);
 
             setShareLink("Heading6", "https://www.facebook.com/");
             setShareLink("Heading7", "https://www.twitter.com/");

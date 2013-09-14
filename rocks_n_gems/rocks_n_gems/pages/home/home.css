@@ -39,10 +39,10 @@
 
                 background-color: #b200ff;
                 border: 10px solid #b200ff;
-                background-image: url(/images/headings/heading1.jpg);
+                background-image: url(/images/headings/heading1.png);
             }
             .Heading1:hover {
-                background-image: url(/images/headings/heading1_blur.jpg);
+                background-image: url(/images/headings/heading1_blur.png);
             }
             .overlayHeading1 {
                 width: 100%;
@@ -54,8 +54,8 @@
             }
             .overlayHeading1Image {
                 position: absolute;
-                margin-top: 30px;
-                margin-left: 20px;
+                margin-top: 10px;
+                margin-left: 10px;
                 padding-top: 5px;
 
                 background-color: #b200ff;
@@ -70,10 +70,10 @@
 
                 background-color: #ff6a00;
                 border: 10px solid #ff6a00;
-                background-image: url(/images/headings/heading2.jpg);
+                background-image: url(/images/headings/heading2.png);
             }
             .Heading2:hover {
-                background-image: url(/images/headings/heading2_blur.jpg);
+                background-image: url(/images/headings/heading2_blur.png);
             }
             .overlayHeading2 {
                 width: 100%;
@@ -85,8 +85,8 @@
             }
             .overlayHeading2Image {
                 position: absolute;
-                margin-top: 30px;
-                margin-left: 20px;
+                margin-top: 10px;
+                margin-left: 10px;
                 padding-top: 5px;
 
                 background-color: #ff6a00;
@@ -100,10 +100,10 @@
 
                 background-color: #ff006e;
                 border: 10px solid #ff006e;
-                background-image: url(/images/headings/heading3.jpg);
+                background-image: url(/images/headings/heading3.png);
             }
             .Heading3:hover {
-                background-image: url(/images/headings/heading3_blur.jpg);
+                background-image: url(/images/headings/heading3_blur.png);
             }
             .overlayHeading3 {
                 width: 100%;
@@ -115,8 +115,8 @@
             }
             .overlayHeading3Image {
                 position: absolute;
-                margin-top: 30px;
-                margin-left: 20px;
+                margin-top: 10px;
+                margin-left: 90px;
                 padding-top: 5px;
 
                 background-color: #ff006e;
@@ -140,19 +140,19 @@ p.description {
                 margin-right: 20px;
                 width: 170px;
                 height: 140px;
-                padding-top: 5px;
 
                 background-color: #ffd800;
                 border: 10px solid #ffd800;
-                background-image: url(/images/headings/heading4.jpg);
+                background-image: url(/images/headings/heading4.png);
             }
             .Heading4:hover {
-                background-image: url(/images/headings/heading4_blur.jpg);
+                background-image: url(/images/headings/heading4_blur.png);
             }
             .overlayHeading4Image {
                 position: absolute;
                 margin-top: 10px;
-                margin-left: 5px;
+                margin-left: 10px;
+                padding-top: 5px;
 
                 background-color: #ffd800;
             }
@@ -166,15 +166,15 @@ p.description {
 
                 background-color: #4cff00;
                 border: 10px solid #4cff00;
-                background-image: url(/images/headings/heading5.jpg);
+                background-image: url(/images/headings/heading5.png);
             }
             .Heading5:hover {
-                background-image: url(/images/headings/heading5_blur.jpg);
+                background-image: url(/images/headings/heading5_blur.png);
             }
             .overlayHeading5Image {
                 position: absolute;
                 margin-top: 10px;
-                margin-left: 20px;
+                margin-left: 10px;
                 padding-top: 5px;
 
                 background-color: #4cff00;

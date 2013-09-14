@@ -117,7 +117,6 @@
     });
 
 
-    var x = 0;
     function mainLoop(time) {
         requestId = requestAnimationFrame(mainLoop);
 
@@ -131,21 +130,17 @@
             var timeLeft = board.getTotalTime() - Math.floor((now - oldTimeEpoch) / 1000);
             board.updateMarker("marker1", "Time", timeLeft);
 
-            // 
+            // handle inputs
             handleInput();
 
             // update entities
-            if (x == 0) {
-                board.addExplosions(3, 3);
-                x++;
-            }
             board.updateGameElements(deltaTime);
 
             // graphics
             graphics.render(deltaTime);
 
             // check collisions
-
+            //board.checkCollisions(deltaTime);
 
             // game over
             if (timeLeft == 0) {
@@ -488,6 +483,9 @@
                     case 38:
                     case 39:
                     case 40: // left - up - right - down arrow
+                        if (mode == LEVEL_EDITOR) {
+                            board.moveCamera(lastKeyPressed, LEVEL_EDITOR);
+                        }
                         lastKeyPressed = false;
                         break;
                 }
@@ -501,7 +499,10 @@
         switch (lastKeyPressed) {
             case SPACE: //space
                 lastCharacterPos = board.getCharacter().getPosition();
-                setTimeout(function () { board.placeDynamite(lastCharacterPos) }, 1000);
+                if (board.getDynamiteNumber() > 0) {
+                    setTimeout(function () { board.placeDynamite(lastCharacterPos) }, 1000);
+                    board.addMine(lastCharacterPos.i, lastCharacterPos.j);
+                }
                 lastKeyPressed = false;
                 break;
             case LEFT:

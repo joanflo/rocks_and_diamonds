@@ -55,7 +55,10 @@
     </AppxManifest>
     <Content Include="default.html" />
     <Content Include="images\elements\character.png" />
-    <Content Include="images\elements\door.png" />
+    <Content Include="images\elements\door_bottom.png" />
+    <Content Include="images\elements\door_left.png" />
+    <Content Include="images\elements\door_right.png" />
+    <Content Include="images\elements\door_up.png" />
     <Content Include="images\elements\dynamite.png" />
     <Content Include="images\elements\empty.png" />
     <Content Include="images\elements\gem.png" />
@@ -66,16 +69,16 @@
     <Content Include="images\elements\sprite_map.png" />
     <Content Include="images\elements\wall.png" />
     <Content Include="images\filelogo.png" />
-    <Content Include="images\headings\heading1.jpg" />
-    <Content Include="images\headings\heading1_blur.jpg" />
-    <Content Include="images\headings\heading2.jpg" />
-    <Content Include="images\headings\heading2_blur.jpg" />
-    <Content Include="images\headings\heading3.jpg" />
-    <Content Include="images\headings\heading3_blur.jpg" />
-    <Content Include="images\headings\heading4.jpg" />
-    <Content Include="images\headings\heading4_blur.jpg" />
-    <Content Include="images\headings\heading5.jpg" />
-    <Content Include="images\headings\heading5_blur.jpg" />
+    <Content Include="images\headings\heading1.png" />
+    <Content Include="images\headings\heading1_blur.png" />
+    <Content Include="images\headings\heading2.png" />
+    <Content Include="images\headings\heading2_blur.png" />
+    <Content Include="images\headings\heading3.png" />
+    <Content Include="images\headings\heading3_blur.png" />
+    <Content Include="images\headings\heading4.png" />
+    <Content Include="images\headings\heading4_blur.png" />
+    <Content Include="images\headings\heading5.png" />
+    <Content Include="images\headings\heading5_blur.png" />
     <Content Include="images\headings\heading6.png" />
     <Content Include="images\headings\heading6_hover.png" />
     <Content Include="images\headings\heading7.png" />
@@ -170,6 +173,8 @@
     <Content Include="pages\game\game.html" />
     <Content Include="pages\game\game.js" />
     <Content Include="pages\game\graphics.js" />
+    <Content Include="pages\game\physics.js" />
+    <Content Include="pages\game\portal.js" />
     <Content Include="pages\game\sprite.js" />
     <Content Include="pages\home\home.css" />
     <Content Include="pages\home\home.html" />
